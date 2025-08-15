@@ -7,15 +7,15 @@ import { Controller, useForm } from 'react-hook-form';
 import { Checkbox, Form, Input, Label, Paragraph, XStack } from 'tamagui';
 import { fromZodError } from 'zod-validation-error';
 
-import { authApi } from '#auth/api/auth';
 import { loginFormDefaultValues } from '#auth/constants/login';
 import { useI18nContext } from '#i18n/i18n-react';
-import { BaseButton } from '#shared/components/button/base-button';
-import { BaseSpinner } from '#shared/components/spinner/base-spinner';
-import { useAppStore } from '#shared/hooks/store/useAppStore';
-import { ToastCustomData } from '#shared/types/IComponent';
 import { loginSchema } from '#auth/schemas/login';
 import { ILoginData } from 'src/types/services/ILoginData';
+import { ToastCustomData } from 'src/shared/types/IComponent';
+import { BaseSpinner } from 'src/shared/components/spinner/base-spinner';
+import { BaseButton } from 'src/shared/components/button/base-button';
+import { useAppStore } from 'src/shared/hooks/store/useAppStore';
+import { useLoginMutation } from 'src/shared/hooks/useLoginMutation';
 
 function RememberMeCheckbox() {
   const { LL } = useI18nContext();
@@ -45,10 +45,12 @@ export function LoginForm() {
   const toast = useToastController();
   const setUser = useAppStore((state) => state.setUser);
 
+  const loginMutation = useLoginMutation();
+
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
     resolver: zodResolver(loginSchema),
@@ -68,22 +70,22 @@ export function LoginForm() {
       return;
     }
 
-    // will throw if `login` returns 500 error, therefore `errorElement` will be rendered
-    console.log('parsed', parsed.data)
-    const loginResponse = await authApi.login(parsed.data as ILoginData);
-    // on 400 error
-    if ('message' in loginResponse) {
-      toast.show(loginResponse.message, {
+    try {
+      console.log('parsed', parsed.data);
+      const loginResponse = await loginMutation.mutateAsync(parsed.data as ILoginData);
+      
+      // on success
+      setUser(loginResponse); // set user data to store
+      router.push('/home');
+    } catch (error) {
+      // The error is already handled by the mutation's onError callback
+      // Show a generic error message to the user
+      toast.show('Login failed. Please try again.', {
         customData: {
           preset: 'error',
         } as ToastCustomData,
       });
-      return;
     }
-
-    // on success
-    setUser(loginResponse); // set user data to store
-    router.push('/home');
   });
 
   return (
@@ -137,10 +139,10 @@ export function LoginForm() {
         <BaseButton
           preset="primary"
           icon={
-            isSubmitting ? <BaseSpinner size="small" preset="primary" /> : <Feather name="log-in" />
+            loginMutation.isPending ? <BaseSpinner size="small" preset="primary" /> : <Feather name="log-in" />
           }
-          disabled={isSubmitting || !isValid}>
-          {isSubmitting ? LL.forms.loginLoading() : LL.forms.login()} (0lelplR)
+          disabled={loginMutation.isPending || !isValid}>
+          {loginMutation.isPending ? LL.forms.loginLoading() : LL.forms.login()}
         </BaseButton>
       </Form.Trigger>
     </Form>

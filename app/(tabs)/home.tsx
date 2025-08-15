@@ -2,7 +2,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { H1, YStack, styled } from 'tamagui';
 
 import { useI18nContext } from '#i18n/i18n-react';
-import { CheckAuthWrapper } from '#shared/components/check-auth-wrapper';
+import { CheckAuthWrapper } from 'src/shared/components/check-auth-wrapper';
 
 const SAV = styled(SafeAreaView, {
   name: 'SAV',

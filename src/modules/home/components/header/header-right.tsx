@@ -1,13 +1,12 @@
 import Feather from '@expo/vector-icons/Feather';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+import { BaseButton } from 'src/shared/components/button/base-button';
+import { BaseSheet } from 'src/shared/components/sheet/base-sheet';
+import { BaseSheetState } from 'src/shared/components/sheet/types';
+import { useAppStore } from 'src/shared/hooks/store/useAppStore';
+import { HeaderButtonProps } from 'src/shared/types/INavigation';
 import { ListItem, Separator, YGroup, getTokenValue } from 'tamagui';
-
-import { BaseButton } from '#shared/components/button/base-button';
-import { BaseSheet } from '#shared/components/sheet/base-sheet';
-import { BaseSheetState } from '#shared/components/sheet/types';
-import { useAppStore } from '#shared/hooks/store/useAppStore';
-import { HeaderButtonProps } from '#shared/types/INavigation';
 
 export function HeaderRight(_: HeaderButtonProps) {
   const router = useRouter();

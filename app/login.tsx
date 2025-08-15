@@ -5,7 +5,7 @@ import { H2, Paragraph, ScrollView, styled } from 'tamagui';
 
 import { LoginForm } from '#auth/components/login-form';
 import { useI18nContext } from '#i18n/i18n-react';
-import { WrapTranslation } from '#shared/components/i18n/wrap-translation';
+import { WrapTranslation } from 'src/shared/components/i18n/wrap-translation';
 
 const SAV = styled(SafeAreaView, {
   name: 'SAV',

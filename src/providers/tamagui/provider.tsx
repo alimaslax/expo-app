@@ -1,8 +1,8 @@
 import { useColorScheme } from 'react-native';
+import { useAppStore } from 'src/shared/hooks/store/useAppStore';
 import { TamaguiProvider, TamaguiProviderProps } from 'tamagui';
 
 
-import { useAppStore } from '#shared/hooks/store/useAppStore';
 import config from 'tamagui.config';
 
 /**

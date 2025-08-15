@@ -2,8 +2,8 @@ import { Link, Stack } from 'expo-router';
 import { H1, YStack } from 'tamagui';
 
 import { useI18nContext } from '#i18n/i18n-react';
-import { BaseButton } from '#shared/components/button/base-button';
-import { useAppStore } from '#shared/hooks/store/useAppStore';
+import { useAppStore } from 'src/shared/hooks/store/useAppStore';
+import { BaseButton } from 'src/shared/components/button/base-button';
 
 export default function Unmatched() {
   const { LL } = useI18nContext();

@@ -1,9 +1,9 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { Except } from 'type-fest';
 
-import { ErrorApiResponseSchema } from '#shared/schemas/error';
 import { userApi, userKeys } from '#user/api/user';
 import { GetUserApiRequest, GetUserApiResponse } from '#user/schemas/user';
+import { ErrorApiResponseSchema } from 'src/shared/schemas/error';
 
 /**
  * fetch single user

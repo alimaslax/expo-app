@@ -1,8 +1,7 @@
 import Feather from '@expo/vector-icons/Feather';
 import { useRouter } from 'expo-router';
-
-import { BaseButton } from '#shared/components/button/base-button';
-import { HeaderBackButtonProps } from '#shared/types/INavigation';
+import { BaseButton } from 'src/shared/components/button/base-button';
+import { HeaderBackButtonProps } from 'src/shared/types/INavigation';
 
 export function HeaderLeft({ canGoBack }: HeaderBackButtonProps) {
   const router = useRouter();

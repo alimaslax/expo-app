@@ -1,7 +1,7 @@
 import { Toast, useToastState } from '@tamagui/toast';
+import { ToastCustomData } from 'src/shared/types/IComponent';
 import { ThemeName } from 'tamagui';
 
-import { ToastCustomData } from '#shared/types/IComponent';
 
 const themeMapper: Record<ToastCustomData['preset'], ThemeName> = {
   default: 'Card',

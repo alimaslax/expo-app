@@ -1,6 +1,6 @@
 import { YStack } from 'tamagui';
+import { BaseSpinner } from './base-spinner';
 
-import { BaseSpinner } from '#shared/components/spinner/base-spinner';
 
 export function LoadingSpinner() {
   return (

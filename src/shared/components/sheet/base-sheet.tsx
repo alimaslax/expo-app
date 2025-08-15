@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { Sheet } from 'tamagui';
+import { BaseSheetState, BaseSheetProps } from './types';
 
-import { BaseSheetProps, BaseSheetState } from '#shared/components/sheet/types';
 
 export function BaseSheet<T extends BaseSheetState>({
   state,

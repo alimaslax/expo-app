@@ -4,8 +4,8 @@ import { useNavigationContainerRef } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { PropsWithChildren, useMemo } from 'react';
 import { useColorScheme } from 'react-native';
+import { useAppStore } from 'src/shared/hooks/store/useAppStore';
 
-import { useAppStore } from '#shared/hooks/store/useAppStore';
 
 /**
  * Wether to render `DarkTheme` or `DefaultTheme` based on the user color scheme.

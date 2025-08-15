@@ -2,8 +2,8 @@ import Feather from '@expo/vector-icons/Feather';
 import type { ErrorBoundaryProps } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { H1, Paragraph, YStack } from 'tamagui';
+import { BaseButton } from './button/base-button';
 
-import { BaseButton } from '#shared/components/button/base-button';
 
 /**
  * to catch expo-router route error

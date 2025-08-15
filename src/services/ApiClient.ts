@@ -9,8 +9,10 @@ import { BASE_URL } from 'src/shared/config';
 
 export class ApiClient {
   private axiosInstance: AxiosInstance;
+  private url: string;
 
-  constructor(config?: AxiosRequestConfig) {
+  constructor(url: string, config?: AxiosRequestConfig) {
+    this.url = url
     this.axiosInstance = axios.create({
       baseURL: BASE_URL,
       timeout: 10000,
@@ -49,9 +51,9 @@ export class ApiClient {
   /**
    * GET request
    */
-  async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  async get<T = any>(config?: AxiosRequestConfig): Promise<T> {
     try {
-      const response = await this.axiosInstance.get<T>(url, config);
+      const response = await this.axiosInstance.get<T>(this.url, config);
       return response.data;
     } catch (error) {
       this.handleError(error as AxiosError);
@@ -62,9 +64,9 @@ export class ApiClient {
   /**
    * POST request
    */
-  async post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  async post<T = any>(data?: any, config?: AxiosRequestConfig): Promise<T> {
     try {
-      const response = await this.axiosInstance.post<T>(url, data, config);
+      const response = await this.axiosInstance.post<T>(this.url, data, config);
       return response.data;
     } catch (error) {
       this.handleError(error as AxiosError);
@@ -75,9 +77,9 @@ export class ApiClient {
   /**
    * PUT request
    */
-  async put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  async put<T = any>(data?: any, config?: AxiosRequestConfig): Promise<T> {
     try {
-      const response = await this.axiosInstance.put<T>(url, data, config);
+      const response = await this.axiosInstance.put<T>(this.url, data, config);
       return response.data;
     } catch (error) {
       this.handleError(error as AxiosError);
@@ -139,6 +141,3 @@ export class ApiClient {
     }
   }
 }
-
-// Export a default instance
-export const apiClient = new ApiClient();

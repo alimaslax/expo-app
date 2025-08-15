@@ -1,10 +1,10 @@
 import Feather from '@expo/vector-icons/Feather';
 import { isFunction } from '@rifandani/nxact-yutiriti';
 import { Children, Dispatch, ReactNode, SetStateAction, useState } from 'react';
+import { HeaderButtonProps } from 'src/shared/types/INavigation';
+import { isEmptyChildren } from 'src/shared/utils/helper';
 import { Button, Sheet } from 'tamagui';
 
-import { HeaderButtonProps } from '#shared/types/INavigation';
-import { isEmptyChildren } from '#shared/utils/helper';
 
 type State = { open: boolean; position: number };
 type RenderProps = {

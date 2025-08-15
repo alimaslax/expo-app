@@ -1,9 +1,9 @@
 import { PropsWithChildren } from 'react';
 import { Paragraph, YStack } from 'tamagui';
 
-import { useCheckAuth } from '#shared/hooks/useCheckAuth';
 import { useI18nContext } from '#i18n/i18n-react';
-import { BaseSpinner } from '#shared/components/spinner/base-spinner';
+import { useCheckAuth } from '../hooks/useCheckAuth';
+import { BaseSpinner } from './spinner/base-spinner';
 
 export function CheckAuthWrapper({ children }: PropsWithChildren) {
   const [authed] = useCheckAuth();
