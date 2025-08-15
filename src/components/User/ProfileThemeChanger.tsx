@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { ListItem, Separator, YGroup } from 'tamagui';
 
 import { useI18nContext } from '#i18n/i18n-react';
-import { ProfileListItem } from '#user/components/profile-list-item';
 import { BaseSheet } from 'src/shared/components/sheet/base-sheet';
 import { BaseSheetState } from 'src/shared/components/sheet/types';
 import { useAppStore } from 'src/shared/hooks/store/useAppStore';
+import { ProfileListItem } from './ProfileListItem';
 
 export function ProfileThemeChanger() {
   const { LL } = useI18nContext();

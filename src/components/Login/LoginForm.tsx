@@ -7,15 +7,15 @@ import { Controller, useForm } from 'react-hook-form';
 import { Checkbox, Form, Input, Label, Paragraph, XStack } from 'tamagui';
 import { fromZodError } from 'zod-validation-error';
 
-import { loginFormDefaultValues } from '#auth/constants/login';
+import { loginFormDefaultValues } from 'src/components/Login/utils/constants';
 import { useI18nContext } from '#i18n/i18n-react';
-import { loginSchema } from '#auth/schemas/login';
 import { ILoginData } from 'src/types/services/ILoginData';
 import { ToastCustomData } from 'src/shared/types/IComponent';
 import { BaseSpinner } from 'src/shared/components/spinner/base-spinner';
 import { BaseButton } from 'src/shared/components/button/base-button';
 import { useAppStore } from 'src/shared/hooks/store/useAppStore';
 import { useLoginMutation } from 'src/shared/hooks/useLoginMutation';
+import { loginSchema } from 'src/form/schemas/LoginSchema';
 
 function RememberMeCheckbox() {
   const { LL } = useI18nContext();

@@ -3,9 +3,9 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { H2, Paragraph, ScrollView, styled } from 'tamagui';
 
-import { LoginForm } from '#auth/components/login-form';
 import { useI18nContext } from '#i18n/i18n-react';
 import { WrapTranslation } from 'src/shared/components/i18n/wrap-translation';
+import { LoginForm } from 'src/components/Login/LoginForm';
 
 const SAV = styled(SafeAreaView, {
   name: 'SAV',

@@ -5,12 +5,12 @@ import { useRouter } from 'expo-router';
 import { H6, ListItem, Paragraph, Separator, XStack, YStack, getTokenValue } from 'tamagui';
 
 import { useI18nContext } from '#i18n/i18n-react';
-import { ProfileListItem } from '#user/components/profile-list-item';
-import { ProfileThemeChanger } from '#user/components/profile-theme-changer';
-import { useGetUser } from '#user/hooks/use-get-user';
+import { useGetUser } from 'src/shared/hooks/useGetUser';
 import { useAppStore } from 'src/shared/hooks/store/useAppStore';
 import { BLURHASH } from 'src/shared/constants/global';
 import { BaseButton } from 'src/shared/components/button/base-button';
+import { ProfileListItem } from 'src/components/User/ProfileListItem';
+import { ProfileThemeChanger } from 'src/components/User/ProfileThemeChanger';
 
 export default function TabsProfileScreen() {
   const { push } = useRouter();

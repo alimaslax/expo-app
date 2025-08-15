@@ -1,8 +1,8 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { Except } from 'type-fest';
 
-import { userApi, userKeys } from '#user/api/user';
-import { GetUserApiRequest, GetUserApiResponse } from '#user/schemas/user';
+import { userApi, userKeys } from 'src/shared/hooks/user';
+import { GetUserApiRequest, GetUserApiResponse } from 'src/form/schemas/USerSchema';
 import { ErrorApiResponseSchema } from 'src/shared/schemas/error';
 
 /**

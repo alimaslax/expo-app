@@ -1,6 +1,5 @@
-import { apiClient } from 'src/services/ApiClient';
 import { ResourceParamsApiRequest } from 'src/shared/schemas/resource';
-import { type GetUserApiRequest, type GetUserApiResponse } from '#user/schemas/user';
+import { type GetUserApiRequest, type GetUserApiResponse } from 'src/form/schemas/USerSchema';
 
 export const userKeys = {
   all: ['users'] as const,

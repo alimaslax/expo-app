@@ -1,4 +1,4 @@
-import { LoginSchema } from '#auth/schemas/login';
+import { LoginSchema } from "src/form/schemas/LoginSchema";
 
 export const loginFormDefaultValues: LoginSchema = {
   username: '',
