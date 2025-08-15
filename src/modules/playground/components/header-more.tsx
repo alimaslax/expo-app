@@ -3,7 +3,7 @@ import { isFunction } from '@rifandani/nxact-yutiriti';
 import { Children, Dispatch, ReactNode, SetStateAction, useState } from 'react';
 import { Button, Sheet } from 'tamagui';
 
-import { HeaderButtonProps } from '#shared/types/navigation';
+import { HeaderButtonProps } from '#shared/types/INavigation';
 import { isEmptyChildren } from '#shared/utils/helper';
 
 type State = { open: boolean; position: number };

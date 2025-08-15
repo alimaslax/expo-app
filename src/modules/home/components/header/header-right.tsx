@@ -7,7 +7,7 @@ import { BaseButton } from '#shared/components/button/base-button';
 import { BaseSheet } from '#shared/components/sheet/base-sheet';
 import { BaseSheetState } from '#shared/components/sheet/types';
 import { useAppStore } from '#shared/hooks/useAppStore';
-import { HeaderButtonProps } from '#shared/types/navigation';
+import { HeaderButtonProps } from '#shared/types/INavigation';
 
 export function HeaderRight(_: HeaderButtonProps) {
   const router = useRouter();
