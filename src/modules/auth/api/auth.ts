@@ -1,5 +1,5 @@
 import { http } from '#shared/services/http';
-import { ILogin } from 'src/types/services/ILoginData';
+import { ILoginData } from 'src/types/services/ILoginData';
 import { ILoginSuccessResponse } from 'src/types/services/ILoginSuccessResponse';
 
 export const authApi = {
