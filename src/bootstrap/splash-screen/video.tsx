@@ -1,5 +1,6 @@
-import { AVPlaybackStatus, ResizeMode, Video } from 'expo-av';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { VideoView, useVideoPlayer } from 'expo-video';
+import { useEventListener } from 'expo';
+import { useMemo, useState, useEffect } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
 
 type Props = {
@@ -11,9 +12,8 @@ type Props = {
  * load video playback asset as splash screen
  */
 export function SplashVideo({ onLoaded, onFinish }: Props) {
-  const video = useRef<Video>(null);
-  const [lastStatus, setStatus] = useState<AVPlaybackStatus>({} as AVPlaybackStatus);
   const { width } = useWindowDimensions();
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const isTablet = useMemo(() => width >= 768, [width]);
   const source = useMemo(
@@ -21,36 +21,28 @@ export function SplashVideo({ onLoaded, onFinish }: Props) {
       isTablet ? require('../../assets/splash-tablet.mp4') : require('../../assets/splash.mp4'),
     [isTablet]
   );
-  const shouldPlay = useMemo(
-    () => !(lastStatus.isLoaded && lastStatus.didJustFinish),
-    [lastStatus]
-  );
 
-  const onPlaybackStatusUpdate = useCallback(
-    (status: AVPlaybackStatus) => {
-      if (status.isLoaded) {
-        if (lastStatus.isLoaded !== status.isLoaded) {
-          onLoaded();
-        }
-        if (status.didJustFinish) {
-          onFinish();
-        }
-      }
+  const player = useVideoPlayer(source, (player) => {
+    player.loop = false;
+    player.play();
+  });
 
-      setStatus(() => status);
-    },
-    [lastStatus.isLoaded, onFinish, onLoaded]
-  );
+  useEventListener(player, 'statusChange', ({ status }) => {
+    if (status === 'readyToPlay' && !hasLoaded) {
+      setHasLoaded(true);
+      onLoaded();
+    }
+  });
+
+  useEventListener(player, 'playToEnd', () => {
+    onFinish();
+  });
 
   return (
-    <Video
-      isLooping={false}
+    <VideoView
       style={StyleSheet.absoluteFill}
-      ref={video}
-      source={source}
-      shouldPlay={shouldPlay}
-      resizeMode={ResizeMode.COVER}
-      onPlaybackStatusUpdate={onPlaybackStatusUpdate}
+      player={player}
+      contentFit="cover"
     />
   );
 }

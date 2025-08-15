@@ -1,7 +1,7 @@
 import { useFocusEffect, usePathname, useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
 
-import { useAppStore } from '#shared/hooks/useAppStore';
+import { useAppStore } from '#shared/hooks/store/useAppStore';
 
 /**
  * Side effect to check user authentication, wether they're logged in or not

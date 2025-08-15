@@ -5,7 +5,7 @@ import { ListItem, Separator, YGroup } from 'tamagui';
 import { useI18nContext } from '#i18n/i18n-react';
 import { BaseSheet } from '#shared/components/sheet/base-sheet';
 import { BaseSheetState } from '#shared/components/sheet/types';
-import { useAppStore } from '#shared/hooks/useAppStore';
+import { useAppStore } from '#shared/hooks/store/useAppStore';
 import { ProfileListItem } from '#user/components/profile-list-item';
 
 export function ProfileThemeChanger() {
