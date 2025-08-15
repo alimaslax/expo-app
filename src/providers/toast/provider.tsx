@@ -1,7 +1,6 @@
 import { ToastProvider, ToastProviderProps } from '@tamagui/toast';
-
-import { SafeToastViewport } from '#bootstrap/providers/toast/safe-toast-viewport';
-import { TheToast } from '#bootstrap/providers/toast/the-toast';
+import { SafeToastViewport } from './safe-toast-viewport';
+import { TheToast } from './the-toast';
 
 const SWIPE_DIRECTION = 'horizontal';
 const DURATION = 3_000; // 3s
