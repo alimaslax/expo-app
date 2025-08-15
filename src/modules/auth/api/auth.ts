@@ -1,21 +1,18 @@
-import type {
-  LoginApiResponseSchema,
-  LoginApiSuccessResponseSchema,
-  LoginSchema,
-} from '#auth/schemas/login';
 import { http } from '#shared/services/http';
+import { ILogin } from 'src/types/services/ILoginData';
+import { ILoginSuccessResponse } from 'src/types/services/ILoginSuccessResponse';
 
 export const authApi = {
-  login: async (creds: LoginSchema) => {
+  login: async (creds: ILogin) => {
     const resp = await http
       .post(`auth/login`, {
-        throwHttpErrors: false, // i'm expecting error response from the backend
+        throwHttpErrors: false,
         json: creds,
         hooks: {
           afterResponse: [
             async (request, _options, response) => {
               if (response.status === 200) {
-                const data = (await response.json()) as LoginApiSuccessResponseSchema;
+                const data = (await response.json()) as ILoginSuccessResponse;
                 // set 'Authorization' headers
                 request.headers.set('Authorization', `Bearer ${data.token}`);
               }
@@ -23,11 +20,8 @@ export const authApi = {
           ],
         },
       })
-      .json<LoginApiResponseSchema>();
-
-    // `parse` will throw if `resp.data` is not correct, and therefore can render expo-router `ErrorBoundaries` if specified
-    // const loginApiResponse = loginApiResponseSchema.parse(resp.data);
-
+      .json<ILoginSuccessResponse>();
+      
     return resp;
   },
 } as const;

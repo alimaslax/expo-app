@@ -9,12 +9,13 @@ import { fromZodError } from 'zod-validation-error';
 
 import { authApi } from '#auth/api/auth';
 import { loginFormDefaultValues } from '#auth/constants/login';
-import { loginSchema } from '#auth/schemas/login';
 import { useI18nContext } from '#i18n/i18n-react';
 import { BaseButton } from '#shared/components/button/base-button';
 import { BaseSpinner } from '#shared/components/spinner/base-spinner';
 import { useAppStore } from '#shared/hooks/store/useAppStore';
 import { ToastCustomData } from '#shared/types/IComponent';
+import { loginSchema } from '#auth/schemas/login';
+import { ILoginData } from 'src/types/services/ILoginData';
 
 function RememberMeCheckbox() {
   const { LL } = useI18nContext();
@@ -69,7 +70,7 @@ export function LoginForm() {
 
     // will throw if `login` returns 500 error, therefore `errorElement` will be rendered
     console.log('parsed', parsed.data)
-    const loginResponse = await authApi.login(parsed.data);
+    const loginResponse = await authApi.login(parsed.data as ILoginData);
     // on 400 error
     if ('message' in loginResponse) {
       toast.show(loginResponse.message, {

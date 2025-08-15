@@ -7,4 +7,5 @@ export interface ILoginSuccessResponse {
   gender: 'male' | 'female';
   image: string;
   token: string;
+  message: string;
 }
