@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { PropsWithChildren, useMemo } from 'react';
 import { useColorScheme } from 'react-native';
 
-import { useAppStore } from '#shared/hooks/use-app-store';
+import { useAppStore } from '#shared/hooks/useAppStore';
 
 /**
  * Wether to render `DarkTheme` or `DefaultTheme` based on the user color scheme.

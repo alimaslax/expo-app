@@ -13,7 +13,7 @@ import { loginSchema } from '#auth/schemas/login';
 import { useI18nContext } from '#i18n/i18n-react';
 import { BaseButton } from '#shared/components/button/base-button';
 import { BaseSpinner } from '#shared/components/spinner/base-spinner';
-import { useAppStore } from '#shared/hooks/use-app-store';
+import { useAppStore } from '#shared/hooks/useAppStore';
 import { ToastCustomData } from '#shared/types/component';
 
 function RememberMeCheckbox() {

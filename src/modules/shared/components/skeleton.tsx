@@ -2,7 +2,7 @@ import React, { ComponentPropsWithoutRef } from 'react';
 import { View } from 'react-native';
 import Animated from 'react-native-reanimated';
 
-import { useSkeletonAnimation } from '#shared/hooks/use-animate-skeleton';
+import { useSkeletonAnimation } from '#shared/hooks/useAnimateSkeleton';
 
 type Props = {
   loaderStyle?: ComponentPropsWithoutRef<typeof Animated.View>['style'];

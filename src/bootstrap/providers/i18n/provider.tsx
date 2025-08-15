@@ -5,7 +5,7 @@ import { AppState } from 'react-native';
 import TypesafeI18n, { useI18nContext } from '#i18n/i18n-react';
 import { Locales } from '#i18n/i18n-types';
 import { loadLocale } from '#i18n/i18n-util.sync';
-import { useLocale } from '#shared/hooks/use-locale';
+import { useLocale } from '#shared/hooks/useLocale';
 
 function AppStateLanguageListener({ children }: PropsWithChildren) {
   const locale = useLocale();

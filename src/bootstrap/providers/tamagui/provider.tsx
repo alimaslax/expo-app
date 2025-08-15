@@ -3,7 +3,7 @@ import { TamaguiProvider, TamaguiProviderProps } from 'tamagui';
 
 import config from '../../../../tamagui.config';
 
-import { useAppStore } from '#shared/hooks/use-app-store';
+import { useAppStore } from '#shared/hooks/useAppStore';
 
 /**
  * Tamagui provider where we apply the `tamagui.config`.

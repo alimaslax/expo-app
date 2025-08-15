@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Paragraph, YStack } from 'tamagui';
 
-import { useCheckAuth } from '#auth/hooks/use-check-auth';
+import { useCheckAuth } from '#shared/hooks/useCheckAuth';
 import { useI18nContext } from '#i18n/i18n-react';
 import { BaseSpinner } from '#shared/components/spinner/base-spinner';
 

@@ -7,7 +7,7 @@ import { H6, ListItem, Paragraph, Separator, XStack, YStack, getTokenValue } fro
 import { useI18nContext } from '#i18n/i18n-react';
 import { BaseButton } from '#shared/components/button/base-button';
 import { BLURHASH } from '#shared/constants/global';
-import { useAppStore } from '#shared/hooks/use-app-store';
+import { useAppStore } from '#shared/hooks/useAppStore';
 import { ProfileListItem } from '#user/components/profile-list-item';
 import { ProfileThemeChanger } from '#user/components/profile-theme-changer';
 import { useGetUser } from '#user/hooks/use-get-user';

@@ -3,7 +3,7 @@ import { H1, YStack } from 'tamagui';
 
 import { useI18nContext } from '#i18n/i18n-react';
 import { BaseButton } from '#shared/components/button/base-button';
-import { useAppStore } from '#shared/hooks/use-app-store';
+import { useAppStore } from '#shared/hooks/useAppStore';
 
 export default function Unmatched() {
   const { LL } = useI18nContext();
