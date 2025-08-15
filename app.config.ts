@@ -16,6 +16,10 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     experiments: {
       typedRoutes: true,
     },
+    web: {
+      bundler: 'metro',
+      output: 'static',
+    },
     plugins: [
       'expo-localization',
       'expo-router',
@@ -52,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     version: '1.0.0',
     orientation: 'portrait',
     userInterfaceStyle: 'automatic',
-    platforms: ['android', 'ios'],
+    platforms: ['android', 'ios', 'web'],
     assetBundlePatterns: ['**/*'],
     icon: './src/assets/icon.png',
     splash: {
