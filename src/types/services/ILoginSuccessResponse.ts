@@ -6,6 +6,7 @@ export interface ILoginSuccessResponse {
   lastName: string;
   gender: 'male' | 'female';
   image: string;
-  token: string;
-  message: string;
+  accessToken: string;
+  refreshToken: string;
+  message?: string; // This is optional, only present in error cases
 }

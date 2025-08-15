@@ -1,5 +1,5 @@
-import { ResourceParamsApiRequest } from '#shared/schemas/resource';
-import { http } from '#shared/services/http';
+import { apiClient } from 'src/services/ApiClient';
+import { ResourceParamsApiRequest } from 'src/shared/schemas/resource';
 import { type GetUserApiRequest, type GetUserApiResponse } from '#user/schemas/user';
 
 export const userKeys = {
@@ -12,7 +12,7 @@ export const userKeys = {
 
 export const userApi = {
   getDetail: async (params: GetUserApiRequest) => {
-    const json = await http.get(`users/${params.id}`).json<GetUserApiResponse>();
+    const json = await apiClient.get<GetUserApiResponse>(`users/${params.id}`);
 
     return json;
   },

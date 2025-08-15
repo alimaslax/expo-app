@@ -1,27 +1,25 @@
-import { http } from '#shared/services/http';
+import { apiClient } from 'src/services/ApiClient';
 import { ILoginData } from 'src/types/services/ILoginData';
 import { ILoginSuccessResponse } from 'src/types/services/ILoginSuccessResponse';
 
 export const authApi = {
-  login: async (creds: ILogin) => {
-    const resp = await http
-      .post(`auth/login`, {
-        throwHttpErrors: false,
-        json: creds,
-        hooks: {
-          afterResponse: [
-            async (request, _options, response) => {
-              if (response.status === 200) {
-                const data = (await response.json()) as ILoginSuccessResponse;
-                // set 'Authorization' headers
-                request.headers.set('Authorization', `Bearer ${data.token}`);
-              }
-            },
-          ],
-        },
-      })
-      .json<ILoginSuccessResponse>();
+  login: async (creds: ILoginData) => {
+    try {
+      const resp = await apiClient.post<ILoginSuccessResponse>('user/login', creds);
+      // Set authorization token if login is successful
+      if (resp.accessToken) {
+        apiClient.setAuthToken(resp.accessToken);
+      }
       
-    return resp;
+      return resp;
+    } catch (error: any) {
+      // Handle 400 errors (invalid credentials) - return the error response instead of throwing
+      if (error.response && error.response.status === 400) {
+        return error.response.data;
+      }
+      
+      // For other errors (500, network issues, etc.), let them bubble up
+      throw error;
+    }
   },
 } as const;
