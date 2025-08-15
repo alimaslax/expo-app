@@ -13,10 +13,22 @@ const appStoreStateSchema = z.object({
   theme: z.enum(['system', 'light', 'dark']),
 });
 const appStoreActionSchema = z.object({
-  reset: z.function().args(z.void()).returns(z.void()),
-  resetUser: z.function().args(z.void()).returns(z.void()),
-  setUser: z.function().args(loginApiSuccessResponseSchema).returns(z.void()),
-  setTheme: z.function().args(appStoreStateSchema.shape.theme).returns(z.void()),
+  reset: z.function({
+  input: [], // parameters (must be an array or a ZodTuple)
+  output: z.void()  // return type
+}),
+  resetUser: z.function({
+  input: [], // parameters (must be an array or a ZodTuple)
+  output: z.void()  // return type
+}),
+  setUser: z.function({
+  input: [loginApiSuccessResponseSchema], // parameters (must be an array or a ZodTuple)
+  output: z.void()  // return type
+}),
+  setTheme:z.function({
+  input: [appStoreStateSchema.shape.theme], // parameters (must be an array or a ZodTuple)
+  output: z.void()  // return type
+}),
 });
 const appStoreSchema = appStoreStateSchema.merge(appStoreActionSchema);
 

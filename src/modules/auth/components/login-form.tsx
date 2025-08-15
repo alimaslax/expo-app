@@ -68,6 +68,7 @@ export function LoginForm() {
     }
 
     // will throw if `login` returns 500 error, therefore `errorElement` will be rendered
+    console.log('parsed', parsed.data)
     const loginResponse = await authApi.login(parsed.data);
     // on 400 error
     if ('message' in loginResponse) {

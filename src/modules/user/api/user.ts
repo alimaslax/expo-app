@@ -14,9 +14,6 @@ export const userApi = {
   getDetail: async (params: GetUserApiRequest) => {
     const json = await http.get(`users/${params.id}`).json<GetUserApiResponse>();
 
-    // we also can use `parse` here. `parse` will throw if `json` is not correct
-    // const response = getUserApiResponseSchema.parse(json);
-
     return json;
   },
 } as const;
