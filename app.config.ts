@@ -5,10 +5,10 @@ import type { ConfigContext, ExpoConfig } from 'expo/config';
  */
 const bundleId =
   process.env.APP_VARIANT === 'development'
-    ? 'com.rifandani.expoapp.development'
+    ? 'com.netjets.Tailwind'
     : process.env.APP_VARIANT === 'test'
-      ? 'com.rifandani.expoapp.test'
-      : 'com.rifandani.expoapp';
+      ? 'com.netjets.Tailwind'
+      : 'com.netjets.Tailwind';
 
 export default ({ config }: ConfigContext): ExpoConfig => {
   return {
